@@ -27,7 +27,8 @@ li {
   align-items: center;
 }
 
-.active {
+/* default active navlink class */
+a.active {
   color: #2dba4e;
 }
 

@@ -13,14 +13,10 @@ const Navbar = ({ title }) => {
 
           <ul className="flex">
             <li>
-              <NavLink to="/" activeClassName="active">
-                Home
-              </NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeClassName="active">
-                About
-              </NavLink>
+              <NavLink to="/about">About</NavLink>
             </li>
           </ul>
         </div>
