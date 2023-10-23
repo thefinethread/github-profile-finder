@@ -10,16 +10,13 @@
 :root {
   --primary-font-color: #fff;
   --secondary-font-color: rgba(255, 255, 255, 0.7);
+  --accent-color-1: #2dba4e;
 }
 
 a {
   color: #fff;
   text-decoration: none;
   transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #2dba4e;
 }
 
 li {
@@ -45,7 +42,7 @@ li {
 
 /* default active navlink class */
 a.active {
-  color: #2dba4e;
+  color: var(--accent-color-1);
 }
 
 body {
@@ -54,7 +51,6 @@ body {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  line-height: 23px;
 }
 
 #root > div {
@@ -75,6 +71,10 @@ body {
 
 .navbar ul {
   gap: 16px;
+}
+
+.navbar a:hover {
+  color: var(--accent-color-1);
 }
 
 /* Footer */
@@ -103,4 +103,32 @@ body {
 .about-container p {
   color: var(--secondary-font-color);
   margin-bottom: 10px;
+}
+
+/* not found page */
+.not-found-container .main-container {
+  flex-direction: column;
+  font-size: 1.5rem;
+  gap: 8px;
+}
+
+.not-found-container .btn {
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: var(--accent-color-1);
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #24943e;
 }
