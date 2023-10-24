@@ -10,6 +10,7 @@
 :root {
   --primary-font-color: #fff;
   --secondary-font-color: rgba(255, 255, 255, 0.7);
+  --secondary-font-color-2: rgba(255, 255, 255, 0.5);
   --accent-color-1: #2dba4e;
 }
 
@@ -17,6 +18,10 @@ a {
   color: #fff;
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-color-1);
 }
 
 li {
@@ -31,13 +36,13 @@ li {
 
 .container,
 .main-container {
-  padding-inline: 20px;
+  padding-inline: 24px;
   max-width: 1080px;
   margin-inline: auto;
 }
 
 .main-container {
-  padding-inline: 40px;
+  padding: 20px;
 }
 
 /* default active navlink class */
@@ -49,13 +54,17 @@ body {
   background-color: #23282d;
   color: #fff;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
 }
 
 #root > div {
   height: 100vh;
   flex-direction: column;
+}
+
+main {
+  width: 90%;
 }
 
 .navbar {
@@ -71,10 +80,6 @@ body {
 
 .navbar ul {
   gap: 16px;
-}
-
-.navbar a:hover {
-  color: var(--accent-color-1);
 }
 
 /* Footer */
@@ -131,4 +136,68 @@ body {
 
 .btn-primary:hover {
   background-color: #24943e;
+}
+
+/* home page */
+.home-container {
+  padding: 20px;
+}
+
+/* user card */
+
+.user-results {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.user-card {
+  background-color: #1b1d21;
+  border-radius: 8px;
+  gap: 18px;
+  padding: 16px;
+  justify-content: start;
+}
+
+.user-card .user-info {
+  height: 100%;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.user-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* border: 1px solid var(--secondary-font-color); */
+}
+
+.user-card a {
+  font-size: 0.75rem;
+  color: var(--secondary-font-color-2);
+}
+
+.user-card a:hover {
+  color: var(--accent-color-1);
+}
+
+@media (max-width: 1030px) {
+  .user-results {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 920px) {
+  .user-results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .user-results {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
