@@ -1,22 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import GithubContext from '../../contexts/github/GithubContext';
 import Spinner from '../shared/Spinner';
-
 import UserCard from './UserCard';
 
 const UserResults = () => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { users, isLoading, fetchUsers } = useContext(GithubContext);
 
   useEffect(() => {
-    fetchUsers();
+    // fetchUsers();
   }, []);
-
-  const fetchUsers = async () => {
-    const res = await fetch(process.env.REACT_APP_GITHUB_URL);
-    const data = await res.json();
-    setUsers(data);
-    setIsLoading(false);
-  };
 
   return isLoading ? (
     <Spinner />
@@ -24,9 +16,9 @@ const UserResults = () => {
     <>
       {/*@Todo- create search component*/}
       <div className="user-results">
-        {users.map((user, index) => {
-          return <UserCard key={index} user={user}></UserCard>;
-        })}
+        {users.map((user) => (
+          <UserCard key={user.id} user={user}></UserCard>
+        ))}
       </div>
     </>
   );
