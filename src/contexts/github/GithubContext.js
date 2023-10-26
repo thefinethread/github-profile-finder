@@ -13,6 +13,7 @@ export const GithubContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
+  // fetchUsers() for testing purpose only
   const fetchUsers = async () => {
     dispatch({
       type: 'SET_LOADING',
@@ -34,7 +35,6 @@ export const GithubContextProvider = ({ children }) => {
       value={{
         users: state.users,
         isLoading: state.isLoading,
-        fetchUsers,
       }}
     >
       {children}
