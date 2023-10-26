@@ -11,7 +11,8 @@
   --primary-font-color: #fff;
   --secondary-font-color: rgba(255, 255, 255, 0.7);
   --secondary-font-color-2: rgba(255, 255, 255, 0.5);
-  --accent-color-1: #2dba4e;
+  --accent-color-light: #2dba4e;
+  --accent-color-dark: #24943e;
 }
 
 a {
@@ -21,17 +22,43 @@ a {
 }
 
 a:hover {
-  color: var(--accent-color-1);
+  color: var(--accent-color-light);
 }
 
 li {
   list-style: none;
 }
 
+button {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: var(--primary-font-color);
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+
 .flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: var(--accent-color-dark);
+  font-size: 1rem;
+  font-weight: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1c7430;
 }
 
 .container,
@@ -47,7 +74,7 @@ li {
 
 /* default active navlink class */
 a.active {
-  color: var(--accent-color-1);
+  color: var(--accent-color-light);
 }
 
 body {
@@ -122,22 +149,6 @@ main {
   gap: 5px;
 }
 
-.btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-}
-
-.btn-primary {
-  background-color: var(--accent-color-1);
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
-
-.btn-primary:hover {
-  background-color: #24943e;
-}
-
 /* home page */
 .home-container {
   padding: 20px;
@@ -183,6 +194,50 @@ main {
 
 .user-card a:hover {
   color: var(--accent-color-1);
+}
+
+/* search user component */
+.search-container {
+  padding-block: 40px;
+}
+.search-container form {
+  justify-content: center;
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+.search-container .form-control {
+  flex: 1;
+  display: inline;
+  position: relative;
+}
+
+.search-container .form-control .clear-input-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  z-index: 2;
+  color: rgba(35, 40, 45, 0.6);
+  transform: translateY(calc(21px - 50%));
+}
+
+.search-container input {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  padding: 5px 30px 5px 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.search-container .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding-block: 10px;
 }
 
 @media (max-width: 1030px) {
