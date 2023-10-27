@@ -11,6 +11,10 @@ const UserSearch = () => {
     setText(e.target.value);
   };
 
+  const clearInput = () => {
+    setText('');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -30,7 +34,11 @@ const UserSearch = () => {
             onChange={handleInput}
           />{' '}
           {text.length > 0 && (
-            <button type="button" className="clear-input-btn">
+            <button
+              onClick={clearInput}
+              type="button"
+              className="clear-input-btn"
+            >
               <RiCloseCircleFill size="1.4rem" />
             </button>
           )}

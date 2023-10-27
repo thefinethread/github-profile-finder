@@ -204,6 +204,8 @@ main {
 }
 .search-container form {
   justify-content: center;
+  align-items: center;
+  height: 40px;
 }
 
 .search-container .form-control {
@@ -237,7 +239,7 @@ main {
 .search-container .btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  padding-block: 10px;
+  height: 100%;
 }
 
 /* alert */
