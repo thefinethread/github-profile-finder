@@ -1,26 +1,28 @@
 import { useState, useContext } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
+import GithubContext from '../../contexts/github/GithubContext';
 import AlertContext from '../../contexts/alerts/AlertContext';
 
 const UserSearch = () => {
   const [text, setText] = useState('');
 
+  const { searchUsers } = useContext(GithubContext);
+
   const { message, showAlert } = useContext(AlertContext);
 
-  const handleInput = (e) => {
-    setText(e.target.value);
-  };
+  const handleInput = (e) => setText(e.target.value);
 
-  const clearInput = () => {
-    setText('');
-  };
+  const clearInput = () => setText('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (text.trim().length === 0) {
       showAlert('Please enter username');
+      return;
     }
+    searchUsers(text);
+    setText('');
   };
 
   return (
