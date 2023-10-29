@@ -9,10 +9,33 @@ export const GithubContextProvider = ({ children }) => {
   const initialState = {
     users: [],
     isLoading: false,
+    user: null,
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
+  const getUser = async (login) => {
+    dispatch({
+      type: 'SET_LOADING',
+    });
+
+    const res = await fetch(`${GITHUB_URL}/users/${login}`);
+
+    if (res.status === 404) {
+      window.location = '/not-found';
+    }
+    const data = await res.json();
+
+    console.log(res);
+    dispatch({
+      type: 'GET_USER',
+      payload: {
+        user: data,
+      },
+    });
+  };
+
+  // search users
   const searchUsers = async (input) => {
     dispatch({
       type: 'SET_LOADING',
@@ -39,7 +62,7 @@ export const GithubContextProvider = ({ children }) => {
     const data = await res.json();
 
     dispatch({
-      type: 'SET_USERS',
+      type: 'GET_USERS',
       payload: {
         users: data,
       },
@@ -51,7 +74,9 @@ export const GithubContextProvider = ({ children }) => {
       value={{
         users: state.users,
         isLoading: state.isLoading,
+        user: state.user,
         searchUsers,
+        getUser,
       }}
     >
       {children}
