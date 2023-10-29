@@ -5,6 +5,7 @@ import Navbar from './components/layouts/Navbar';
 import Footer from './components/layouts/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import User from './pages/User';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/not-found" element={<NotFound />} />
                 <Route path="/*" element={<NotFound />} />
+                <Route path="/user/:login" element={<User />} />
               </Routes>
             </main>
             <Footer />

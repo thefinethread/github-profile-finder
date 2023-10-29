@@ -2,13 +2,14 @@ import { useState, useContext } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
 import GithubContext from '../../contexts/github/GithubContext';
 import AlertContext from '../../contexts/alerts/AlertContext';
+import Alert from '../shared/Alert';
 
 const UserSearch = () => {
   const [text, setText] = useState('');
 
   const { searchUsers } = useContext(GithubContext);
 
-  const { message, showAlert } = useContext(AlertContext);
+  const { showAlert } = useContext(AlertContext);
 
   const handleInput = (e) => setText(e.target.value);
 
@@ -18,7 +19,7 @@ const UserSearch = () => {
     e.preventDefault();
 
     if (text.trim().length === 0) {
-      showAlert('Please enter username');
+      showAlert('Please enter username', 'error');
       return;
     }
     searchUsers(text);
@@ -34,7 +35,7 @@ const UserSearch = () => {
             placeholder="search username..."
             value={text}
             onChange={handleInput}
-          />{' '}
+          />
           {text.length > 0 && (
             <button
               onClick={clearInput}
@@ -49,7 +50,7 @@ const UserSearch = () => {
           Search
         </button>
       </form>
-      {message.length >= 0 && <div className="alert-container">{message}</div>}
+      <Alert />
     </div>
   );
 };

@@ -193,7 +193,7 @@ main {
 }
 
 .user-card a:hover {
-  color: var(--accent-color-1);
+  color: var(--accent-color-light);
 }
 
 /* search user component */

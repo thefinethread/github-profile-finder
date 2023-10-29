@@ -4,17 +4,16 @@ import alertReducer from './AlertReducer';
 const AlertContext = createContext();
 
 export const AlertContextProvider = ({ children }) => {
-  const initialState = {
-    message: '',
-  };
+  const initialState = null;
 
   const [state, dispatch] = useReducer(alertReducer, initialState);
 
-  const showAlert = (message) => {
+  const showAlert = (message, alertType) => {
     dispatch({
-      type: 'ERROR',
+      type: 'SET_ALERT',
       payload: {
         message,
+        alertType,
       },
     });
 
@@ -28,7 +27,7 @@ export const AlertContextProvider = ({ children }) => {
   return (
     <AlertContext.Provider
       value={{
-        message: state.message,
+        alert: state,
         showAlert,
       }}
     >
