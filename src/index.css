@@ -45,6 +45,11 @@ button:focus {
   align-items: center;
 }
 
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.19);
+}
+
 .btn {
   padding: 8px 16px;
   border-radius: 4px;
@@ -57,19 +62,31 @@ button:focus {
   transition: background-color 0.2s ease;
 }
 
+.btn-secondary {
+  background-color: rgba(168, 168, 168, 0.1);
+  border: 1px solid rgba(168, 168, 168, 0.4);
+  font-size: 1rem;
+  font-weight: 0.9rem;
+  transition: background-color border 0.2s ease;
+}
+
 .btn-primary:hover {
   background-color: #1c7430;
 }
 
-.container,
-.main-container {
-  padding-inline: 24px;
-  max-width: 1080px;
-  margin-inline: auto;
+.btn-secondary:hover {
+  background-color: rgba(168, 168, 168, 0.2);
+  border: 1px solid rgba(168, 168, 168, 0.8);
 }
 
+.container,
 .main-container {
-  padding: 20px;
+  padding: 13px 24px 13px 24px;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.main-container {
+  padding-block: 40px 10px;
 }
 
 /* default active navlink class */
@@ -91,13 +108,13 @@ body {
 }
 
 main {
-  width: 90%;
+  width: 100%;
 }
 
 .navbar {
   background-color: #16191c;
   width: 100%;
-  padding-block: 13px;
+  /* padding-block: 13px; */
 }
 
 .navbar .title {
@@ -198,7 +215,7 @@ main {
 
 /* search user component */
 .search-container {
-  padding-block: 40px;
+  padding-bottom: 40px;
   max-width: 500px;
   margin-inline: auto;
 }
@@ -247,6 +264,36 @@ main {
   font-size: 0.85rem;
   margin-block: 2px;
   color: var(--secondary-font-color);
+}
+
+/* user container */
+
+.user-container {
+  align-items: start;
+  margin-top: 24px;
+  line-height: 24px;
+  height: 100%;
+}
+
+.user-container .text-dim {
+  color: var(--secondary-font-color);
+  font-weight: 200;
+}
+
+.user-container .left-section {
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  max-width: 300px;
+  padding-inline: 10px;
+}
+.user-container .profile-pic-container img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.user-container .right-section {
+  flex: 1;
 }
 
 @media (max-width: 1030px) {

@@ -26,7 +26,6 @@ export const GithubContextProvider = ({ children }) => {
     }
     const data = await res.json();
 
-    console.log(res);
     dispatch({
       type: 'GET_USER',
       payload: {
