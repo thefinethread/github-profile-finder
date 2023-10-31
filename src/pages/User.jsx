@@ -6,6 +6,8 @@ import {
   RiMailLine,
   RiLinksLine,
   RiTwitterXFill,
+  RiGitRepositoryFill,
+  RiStore2Fill,
 } from 'react-icons/ri';
 import GithubContext from '../contexts/github/GithubContext';
 import Spinner from '../components/shared/Spinner';
@@ -43,6 +45,8 @@ const User = () => {
       blog,
       twitter_username,
       email,
+      public_repos,
+      public_gists,
     } = user;
 
     return (
@@ -130,6 +134,27 @@ const User = () => {
                     </a>
                   </div>
                 )}
+              </div>
+              <div className="divider"></div>
+
+              <div
+                style={{ lineHeight: 'normal' }}
+                className="flex flex-gap-5 width-100-prct"
+              >
+                <div className="flex width-100-prct flex-jus-ct-strt flex-gap-5">
+                  <div className="flex flex-cl">
+                    <span className="text-sm-2 text-dim">Public Repos</span>
+                    <span>{public_repos}</span>
+                  </div>
+                  <RiGitRepositoryFill size="1.8rem" className="text-dim" />
+                </div>
+                <div className="flex width-100-prct flex-jus-ct-strt flex-gap-5">
+                  <div className="flex flex-cl">
+                    <span className="text-sm-2 text-dim">Public Gists</span>
+                    <span>{public_gists}</span>
+                  </div>
+                  <RiStore2Fill size="1.8rem" className="text-dim" />
+                </div>
               </div>
             </div>
             <div className="right-section">repos</div>

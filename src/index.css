@@ -51,6 +51,7 @@ button:focus {
 
 .divider {
   height: 1px;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.19);
 }
 
@@ -72,6 +73,10 @@ button:focus {
 
 .width-100-prct {
   width: 100%;
+}
+
+.flex-cl {
+  flex-direction: column;
 }
 
 .btn {
@@ -318,8 +323,8 @@ main {
 }
 
 .text-dim {
-  color: var(--secondary-font-color);
-  font-weight: 200;
+  color: var(--secondary-font-color-2);
+  font-weight: 300;
 }
 
 .user-container .left-section {
