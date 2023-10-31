@@ -13,11 +13,13 @@ import GithubContext from '../contexts/github/GithubContext';
 import Spinner from '../components/shared/Spinner';
 
 const User = () => {
-  const { user, getUser, isLoading } = useContext(GithubContext);
+  const { user, repos, getUser, isLoading, getRepos } =
+    useContext(GithubContext);
   const params = useParams();
 
   useEffect(() => {
     getUser(params.login);
+    getRepos(params.login);
   }, []);
 
   const roundOffConnections = (num) => {

@@ -10,14 +10,16 @@ export const GithubContextProvider = ({ children }) => {
     users: [],
     isLoading: false,
     user: null,
+    repos: [],
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
+  const setLoading = () => dispatch({ type: 'SET_LOADING' });
+
+  // get a single user
   const getUser = async (login) => {
-    dispatch({
-      type: 'SET_LOADING',
-    });
+    setLoading();
 
     const res = await fetch(`${GITHUB_URL}/users/${login}`);
 
@@ -34,11 +36,29 @@ export const GithubContextProvider = ({ children }) => {
     });
   };
 
+  // get user repos
+  const getRepos = async (login) => {
+    setLoading();
+
+    const params = new URLSearchParams({
+      sort: 'created',
+      per_page: 10,
+    });
+
+    const res = await fetch(`${GITHUB_URL}/users/${login}/repos?${params}`);
+    const data = await res.json();
+
+    dispatch({
+      type: 'GET_REPOS',
+      payload: {
+        repos: data,
+      },
+    });
+  };
+
   // search users
   const searchUsers = async (input) => {
-    dispatch({
-      type: 'SET_LOADING',
-    });
+    setLoading();
 
     const res = await fetch(`${GITHUB_URL}/search/users?q=${input} type:user`);
     const data = await res.json();
@@ -53,9 +73,7 @@ export const GithubContextProvider = ({ children }) => {
 
   // fetchUsers() for testing purpose only
   const fetchUsers = async () => {
-    dispatch({
-      type: 'SET_LOADING',
-    });
+    setLoading();
 
     const res = await fetch(`${GITHUB_URL}/users`);
     const data = await res.json();
@@ -76,6 +94,7 @@ export const GithubContextProvider = ({ children }) => {
         user: state.user,
         searchUsers,
         getUser,
+        getRepos,
       }}
     >
       {children}
