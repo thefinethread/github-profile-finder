@@ -9,7 +9,7 @@ export const GithubContextProvider = ({ children }) => {
   const initialState = {
     users: [],
     isLoading: false,
-    user: null,
+    user: {},
     repos: [],
   };
 
@@ -92,6 +92,7 @@ export const GithubContextProvider = ({ children }) => {
         users: state.users,
         isLoading: state.isLoading,
         user: state.user,
+        repos: state.repos,
         searchUsers,
         getUser,
         getRepos,
