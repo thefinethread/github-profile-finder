@@ -25,7 +25,7 @@ const RepoCard = ({ repo }) => {
   return (
     <div className="repo-card flex text-sm flex-cl">
       <div className="width-100">
-        <div className="flex width-100 mb-5">
+        <div className="flex width-100 gap-10 mb-10">
           <a href={html_url}>
             <p className="color-accent">{name}</p>
           </a>
@@ -35,18 +35,18 @@ const RepoCard = ({ repo }) => {
         </div>
         <p className="width-100 text-dim text-sm-2">{description}</p>
       </div>
-      <div className="flex flex-jus-ct-strt gap-10 width-100 text-sm-2 text-dim">
+      <div className="flex justify-start gap-10 width-100 text-sm-2 text-dim">
         {language && (
-          <div className="flex flex-gap-5">
+          <div className="flex gap-5">
             <span style={languageStyles} className="language-circle"></span>
             <p>{language}</p>
           </div>
         )}
-        <div className="flex flex-gap-5 repo-stat stars">
+        <div className="flex gap-5 repo-stat stars">
           <RiStarFill />
           <span>{formatNumberWithSuffix(stargazers_count)}</span>
         </div>
-        <div className="flex flex-gap-5 repo-stat forks">
+        <div className="flex gap-5 repo-stat forks">
           <RiGitBranchFill />
           <span>{formatNumberWithSuffix(forks)}</span>
         </div>

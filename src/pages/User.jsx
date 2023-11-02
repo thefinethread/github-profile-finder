@@ -58,12 +58,14 @@ const User = () => {
       {user !== null && (
         <div className="user-container flex gap-10">
           <div className="left-section flex">
-            <div className="profile-pic-container">
-              <img src={avatar_url} alt="profile pic" />
-            </div>
-            <div className="user-name">
-              <h2>{name}</h2>
-              <p className="text-dim">{login}</p>
+            <div className="user-personal-info flex flex-cl  align-items-start gap-10">
+              <div className="profile-pic-container">
+                <img src={avatar_url} alt="profile pic" />
+              </div>
+              <div className="user-name">
+                <h2>{name}</h2>
+                <p className="text-dim">{login}</p>
+              </div>
             </div>
             <div className="user-tags flex text-sm-2">
               <span>{type}</span>
@@ -80,12 +82,12 @@ const User = () => {
               </button>
             </a>
             <div className="bio">{bio}</div>
-            <div className=" flex text-sm flex-gap-5">
+            <div className=" flex text-sm gap-5">
               <a
                 href={following_url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-gap-5"
+                className="flex gap-5"
               >
                 <RiGroupLine className="text-dim" />
                 <span>{formatNumberWithSuffix(followers)}</span>
@@ -96,7 +98,7 @@ const User = () => {
                 href={followers_url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-gap-5"
+                className="flex gap-5"
               >
                 <span>{formatNumberWithSuffix(following)}</span>
                 <span className="text-dim">followers</span>
@@ -104,21 +106,21 @@ const User = () => {
             </div>
             <div>
               {location && (
-                <div className="flex flex-jus-ct-strt flex-gap-5">
+                <div className="flex justify-start gap-5">
                   <RiMapPin2Line className="text-dim" />
                   <span className="text-sm">{location}</span>
                 </div>
               )}
 
               {email && (
-                <div className="flex flex-jus-ct-strt flex-gap-5">
+                <div className="flex justify-start gap-5">
                   <RiMailLine className="text-dim" />
                   <span className="text-sm">{email}</span>
                 </div>
               )}
 
               {blog && (
-                <div className="flex flex-jus-ct-strt flex-gap-5">
+                <div className="flex justify-start gap-5">
                   <RiLinksLine className="text-dim" />
                   <a href={`https://${blog}`}>
                     <span className=" text-sm">{blog}</span>
@@ -127,7 +129,7 @@ const User = () => {
               )}
 
               {twitter_username && (
-                <div className="flex flex-jus-ct-strt flex-gap-5">
+                <div className="flex justify-start gap-5">
                   <RiTwitterXFill className="text-dim" />
                   <a href={`https://twitter.com/${twitter_username}`}>
                     <span className=" text-sm">@{twitter_username}</span>
@@ -139,16 +141,16 @@ const User = () => {
 
             <div
               style={{ lineHeight: 'normal' }}
-              className="flex flex-gap-5 width-100"
+              className="flex gap-5 width-100"
             >
-              <div className="flex width-100 flex-jus-ct-strt flex-gap-5">
+              <div className="flex width-100 justify-start gap-5">
                 <div className="flex flex-cl">
                   <span className="text-sm-2 text-dim">Public Repos</span>
                   <span>{public_repos}</span>
                 </div>
                 <RiGitRepositoryFill size="1.8rem" className="text-dim" />
               </div>
-              <div className="flex width-100flex-jus-ct-strt flex-gap-5">
+              <div className="flex width-100 justify-start gap-5">
                 <div className="flex flex-cl">
                   <span className="text-sm-2 text-dim">Public Gists</span>
                   <span>{public_gists}</span>
