@@ -270,29 +270,20 @@ main {
 
 /* search user component */
 .search-container {
-  padding-bottom: 40px;
-  max-width: 500px;
-  margin-inline: auto;
+  margin-bottom: 40px;
+  height: 40px;
 }
+
 .search-container form {
   justify-content: center;
   align-items: center;
   height: 40px;
+  width: 500px;
 }
 
 .search-container .form-control {
   flex: 1;
   display: inline;
-  position: relative;
-}
-
-.search-container .form-control .clear-input-btn {
-  position: absolute;
-  top: 0;
-  right: 5px;
-  z-index: 2;
-  color: rgba(35, 40, 45, 0.6);
-  transform: translateY(calc(21px - 50%));
 }
 
 .search-container input {
@@ -309,9 +300,12 @@ main {
 }
 
 .search-container .btn {
+  height: 100%;
+}
+
+.search-container .btn-primary {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  height: 100%;
 }
 
 /* alert */

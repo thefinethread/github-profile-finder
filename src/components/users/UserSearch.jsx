@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react';
-import { RiCloseCircleFill } from 'react-icons/ri';
 import GithubContext from '../../contexts/github/GithubContext';
 import AlertContext from '../../contexts/alerts/AlertContext';
 import { searchUsers } from '../../actions/GithubActions';
@@ -8,13 +7,11 @@ import Alert from '../shared/Alert';
 const UserSearch = () => {
   const [text, setText] = useState('');
 
-  const { dispatch } = useContext(GithubContext);
+  const { users, dispatch } = useContext(GithubContext);
 
   const { showAlert } = useContext(AlertContext);
 
   const handleInput = (e) => setText(e.target.value);
-
-  const clearInput = () => setText('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,20 +22,18 @@ const UserSearch = () => {
       dispatch({ type: 'SET_LOADING' });
 
       const users = await searchUsers(text);
-
-      dispatch({
-        type: 'SEARCH_USERS',
-        payload: {
-          users,
-        },
-      });
+      dispatch({ type: 'SEARCH_USERS', payload: { users } });
 
       setText('');
     }
   };
 
+  const clearSearchResults = () => {
+    dispatch({ type: 'CLEAR_SEARCH_RESULTS' });
+  };
+
   return (
-    <div className="search-container">
+    <div className="search-container flex justify-start width-100 gap-10">
       <form className="flex" onSubmit={handleSubmit}>
         <div className="form-control">
           <input
@@ -47,20 +42,20 @@ const UserSearch = () => {
             value={text}
             onChange={handleInput}
           />
-          {text.length > 0 && (
-            <button
-              onClick={clearInput}
-              type="button"
-              className="clear-input-btn"
-            >
-              <RiCloseCircleFill size="1.4rem" />
-            </button>
-          )}
         </div>
         <button className="btn btn-primary" type="submit">
           Search
         </button>
       </form>
+      {users.length > 0 && (
+        <button
+          type="submit"
+          className="btn btn-secondary"
+          onClick={clearSearchResults}
+        >
+          Clear
+        </button>
+      )}
       <Alert />
     </div>
   );

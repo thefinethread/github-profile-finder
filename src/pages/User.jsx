@@ -21,20 +21,18 @@ const User = () => {
   const params = useParams();
 
   useEffect(() => {
-    getUserData();
-  }, []);
-
-  const getUserData = async () => {
     dispatch({ type: 'SET_LOADING' });
 
-    const user = await getUser(params.login);
+    const getUserData = async () => {
+      const user = await getUser(params.login);
+      dispatch({ type: 'GET_USER', payload: { user } });
 
-    dispatch({ type: 'GET_USER', payload: { user } });
+      const repos = await getRepos(params.login);
+      dispatch({ type: 'GET_REPOS', payload: { repos } });
+    };
 
-    const repos = await getRepos(params.login);
-
-    dispatch({ type: 'GET_REPOS', payload: { repos } });
-  };
+    getUserData();
+  }, [dispatch, params.login]);
 
   if (isLoading) {
     return <Spinner />;
