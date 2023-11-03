@@ -144,7 +144,7 @@ button:focus {
   padding-block: 40px 10px;
 }
 
-/* default active navlink class */
+/* default active nav link class */
 a.active {
   color: var(--accent-color-light);
 }
