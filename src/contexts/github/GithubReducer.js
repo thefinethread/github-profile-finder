@@ -1,3 +1,5 @@
+import { act } from 'react-dom/test-utils';
+
 const githubReducer = (state, action) => {
   switch (action.type) {
     case 'GET_USERS':
@@ -14,16 +16,10 @@ const githubReducer = (state, action) => {
         isLoading: false,
       };
 
-    case 'GET_USER':
+    case 'GET_USER_AND_REPOS':
       return {
         ...state,
         user: action.payload.user,
-        isLoading: false,
-      };
-
-    case 'GET_REPOS':
-      return {
-        ...state,
         repos: action.payload.repos,
         isLoading: false,
       };

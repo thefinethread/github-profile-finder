@@ -12,7 +12,7 @@ import {
 import GithubContext from '../contexts/github/GithubContext';
 import Spinner from '../components/shared/Spinner';
 import UserRepos from '../components/repos/UserRepos';
-import { getUser, getRepos } from '../actions/GithubActions';
+import { getUserAndRepos } from '../actions/GithubActions';
 import { formatNumberWithSuffix } from '../utils/utils';
 
 const User = () => {
@@ -24,11 +24,8 @@ const User = () => {
     dispatch({ type: 'SET_LOADING' });
 
     const getUserData = async () => {
-      const user = await getUser(params.login);
-      dispatch({ type: 'GET_USER', payload: { user } });
-
-      const repos = await getRepos(params.login);
-      dispatch({ type: 'GET_REPOS', payload: { repos } });
+      const userData = await getUserAndRepos(params.login);
+      dispatch({ type: 'GET_USER_AND_REPOS', payload: userData });
     };
 
     getUserData();
