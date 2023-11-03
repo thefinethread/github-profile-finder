@@ -33,29 +33,31 @@ const UserSearch = () => {
   };
 
   return (
-    <div className="search-container flex justify-start width-100 gap-10">
-      <form className="flex" onSubmit={handleSubmit}>
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="search username..."
-            value={text}
-            onChange={handleInput}
-          />
-        </div>
-        <button className="btn btn-primary" type="submit">
-          Search
-        </button>
-      </form>
-      {users.length > 0 && (
-        <button
-          type="submit"
-          className="btn btn-secondary"
-          onClick={clearSearchResults}
-        >
-          Clear
-        </button>
-      )}
+    <div style={{ marginBottom: '40px' }}>
+      <div className="search-container flex justify-start width-100 gap-10">
+        <form className="flex" onSubmit={handleSubmit}>
+          <div className="form-control">
+            <input
+              type="text"
+              placeholder="search username..."
+              value={text}
+              onChange={handleInput}
+            />
+          </div>
+          <button className="btn btn-primary" type="submit">
+            Search
+          </button>
+        </form>
+        {users.length > 0 && (
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={clearSearchResults}
+          >
+            Clear
+          </button>
+        )}
+      </div>
       <Alert />
     </div>
   );
